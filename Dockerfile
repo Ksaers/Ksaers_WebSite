@@ -1,23 +1,23 @@
 # Stage 1: Build
-FROM node:16-alpine AS builder
-
+FROM node:18-alpine AS builder
 WORKDIR /app
 
 # Copy package files
 COPY package*.json ./
 
 # Install dependencies
-RUN npm ci
+RUN npm install --legacy-peer-deps
 
 # Copy source code
 COPY . .
 
 # Build the Gatsby site
+ENV GATSBY_TELEMETRY_DISABLED=1
+ENV NODE_OPTIONS="--max-old-space-size=2048"
 RUN npm run build
 
 # Stage 2: Production
-FROM node:16-alpine
-
+FROM node:18-alpine
 WORKDIR /app
 
 # Install serve to run the static site
