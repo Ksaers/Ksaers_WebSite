@@ -183,7 +183,7 @@ const Projects = () => {
               github
               external
             }
-            html
+            rawMarkdownBody
           }
         }
       }
@@ -212,7 +212,7 @@ const Projects = () => {
   const projectsToShow = showMore ? projects : firstSix;
 
   const projectInner = node => {
-    const { frontmatter, html } = node;
+    const { frontmatter, rawMarkdownBody } = node;
     const { github, external, title, tech } = frontmatter;
 
     return (
@@ -247,7 +247,7 @@ const Projects = () => {
             </a>
           </h3>
 
-          <div className="project-description" dangerouslySetInnerHTML={{ __html: html }} />
+          <div className="project-description" dangerouslySetInnerHTML={{ __html: rawMarkdownBody }} />
         </header>
 
         <footer>

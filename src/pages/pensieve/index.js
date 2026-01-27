@@ -224,7 +224,7 @@ export const pageQuery = graphql`
             tags
             draft
           }
-          html
+          rawMarkdownBody
         }
       }
     }

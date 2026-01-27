@@ -331,7 +331,7 @@ const Featured = () => {
               external
               cta
             }
-            html
+            rawMarkdownBody
           }
         }
       }
@@ -339,7 +339,7 @@ const Featured = () => {
   `);
 
   const featuredProjects = data.featured.edges.filter(({ node }) => node.fileAbsolutePath.includes('/content/featured/'));
-  console.log('Featured data:', featuredProjects.map(({ node }) => ({ title: node.frontmatter.title, html: node.html, raw: node.rawMarkdownBody })));
+  // Debug removed
   const revealTitle = useRef(null);
   const revealProjects = useRef([]);
   const prefersReducedMotion = usePrefersReducedMotion();
@@ -362,7 +362,7 @@ const Featured = () => {
       <StyledProjectsGrid>
         {featuredProjects &&
           featuredProjects.map(({ node }, i) => {
-            const { frontmatter, html } = node;
+            const { frontmatter, rawMarkdownBody } = node;
             const { external, title, tech, github, cover, cta } = frontmatter;
             const image = getImage(cover);
 

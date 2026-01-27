@@ -1,4 +1,0 @@
-#!/bin/sh
-. "$(dirname "$0")/_/ksaers.sh"
-
-npm run lint-staged

@@ -180,7 +180,7 @@ const Jobs = () => {
               range
               url
             }
-            html
+            rawMarkdownBody
           }
         }
       }
@@ -272,7 +272,7 @@ const Jobs = () => {
         <StyledTabPanels>
           {jobsData &&
             jobsData.map(({ node }, i) => {
-              const { frontmatter, html } = node;
+              const { frontmatter, rawMarkdownBody } = node;
               const { title, url, company, range } = frontmatter;
 
               return (
@@ -296,7 +296,7 @@ const Jobs = () => {
 
                     <p className="range">{range}</p>
 
-                    <div dangerouslySetInnerHTML={{ __html: html }} />
+                    <div dangerouslySetInnerHTML={{ __html: rawMarkdownBody }} />
                   </StyledTabPanel>
                 </CSSTransition>
               );

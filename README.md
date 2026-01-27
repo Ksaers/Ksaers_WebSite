@@ -20,6 +20,7 @@
 
 ## 🚀 Building and Running for Production
 
+### Локально
 1. Generate a full static production build
 
    ```sh
@@ -31,6 +32,8 @@
    ```sh
    npm run serve
    ```
+
+
 
 ## 🎨 Color Reference
 
