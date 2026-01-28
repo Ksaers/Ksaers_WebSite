@@ -1,6 +1,6 @@
 ---
 date: '1'
-title: 'SkyCast - Wheater APP'
+title: 'SkyCast - Weather APP'
 cover: './skycast.png'
 github: 'https://github.com/Ksaers/SkyCast'
 external: 'https://github.com/Ksaers/SkyCast/'

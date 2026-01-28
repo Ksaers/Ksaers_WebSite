@@ -42,12 +42,13 @@ const StyledHeader = styled.header`
         box-shadow: 0 10px 30px -10px var(--navy-shadow);
       `};
 
+    /* Keep navigation visible when scrolling down: do not hide the header */
     ${props =>
     props.scrollDirection === 'down' &&
       !props.scrolledToTop &&
       css`
         height: var(--nav-scroll-height);
-        transform: translateY(calc(var(--nav-scroll-height) * -1));
+        transform: translateY(0px);
         box-shadow: 0 10px 30px -10px var(--navy-shadow);
       `};
   }

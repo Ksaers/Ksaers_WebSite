@@ -8,6 +8,7 @@ import { usePrefersReducedMotion, useScrollDirection } from '@hooks';
 
 const StyledHeroSection = styled.section`
  ${({ theme }) => theme.mixins.flexCenter};
+  position: relative;
   flex-direction: column;
   align-items: flex-start;
 
@@ -41,6 +42,45 @@ const StyledHeroSection = styled.section`
   p {
     margin: 20px 0 0;
     max-width: 540px;
+  }
+
+  .scroll-indicator {
+    position: absolute;
+    left: 50%;
+    bottom: clamp(20px, 4vh, 48px);
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(32px, 3.5vw, 48px);
+    height: clamp(32px, 3.5vw, 48px);
+    border-radius: 50%;
+    background: rgba(100,255,218,0.06);
+    color: var(--green);
+    text-decoration: none;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    z-index: 5;
+
+    svg {
+      width: clamp(12px, 1.6vw, 18px);
+      height: clamp(12px, 1.6vw, 18px);
+      fill: none;
+      stroke: var(--green);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .scroll-indicator {
+      animation: float 1.6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+      100% { transform: translateX(-50%) translateY(0); }
+    }
   }
 
   .email-link {
@@ -194,6 +234,28 @@ const Hero = () => {
           )}
         </TransitionGroup>
       )}
+      <a
+        href="#about"
+        className="scroll-indicator"
+        aria-label="Scroll down"
+        onClick={e => {
+          e.preventDefault();
+          const target = document.getElementById('about');
+          if (target) {
+            const header = document.querySelector('header');
+            const headerHeight = header ? header.offsetHeight : 0;
+            const top = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 16;
+            window.scrollTo({ top, behavior: 'smooth' });
+          } else {
+            // fallback to anchor behavior
+            window.location.href = '#about';
+          }
+        }}
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </a>
     </StyledHeroSection>
   );
 };

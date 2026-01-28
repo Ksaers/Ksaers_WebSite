@@ -17,7 +17,9 @@ const variables = css`
     --pink: #f57dff;
     --blue: #57cbff;
 
-    --font-sans: 'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', -apple-system, system-ui,
+    /* Prefer Inter (web font) for consistent cross-device rendering.
+       Calibre remains in the stack as a fallback if Inter isn't available locally. */
+    --font-sans: 'Inter', 'Calibre', 'San Francisco', 'SF Pro Text', -apple-system, system-ui,
       sans-serif;
     --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
 

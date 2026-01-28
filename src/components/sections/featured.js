@@ -298,6 +298,7 @@ const StyledProject = styled.li`
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
+  
 
       @media (max-width: 768px) {
         object-fit: cover;
@@ -409,7 +410,44 @@ const Featured = () => {
                 </div>
 
                 <div className="project-image">
-                  <a href={external ? external : github ? github : '#'}>
+                  <a
+                    href={external ? external : github ? github : '#'}
+                    // Prevent navigation on click but remove focus so :focus styles don't persist
+                    onClick={e => {
+                      e.preventDefault();
+                      e.currentTarget.blur();
+                    }}
+                    onMouseDown={e => {
+                      const img = e.currentTarget.querySelector('.img');
+                      if (img) {
+                        img.style.transition = 'transform 160ms ease';
+                        img.style.transform = 'scale(1.12)';
+                      }
+                    }}
+                    onMouseUp={e => {
+                      const img = e.currentTarget.querySelector('.img');
+                      if (img) img.style.transform = '';
+                      e.currentTarget.blur();
+                    }}
+                    onMouseLeave={e => {
+                      const img = e.currentTarget.querySelector('.img');
+                      if (img) img.style.transform = '';
+                    }}
+                    onTouchStart={e => {
+                      const img = e.currentTarget.querySelector('.img');
+                      if (img) {
+                        img.style.transition = 'transform 160ms ease';
+                        img.style.transform = 'scale(1.12)';
+                      }
+                    }}
+                    onTouchEnd={e => {
+                      const img = e.currentTarget.querySelector('.img');
+                      if (img) img.style.transform = '';
+                      e.currentTarget.blur();
+                    }}
+                    role="button"
+                    aria-label={`Preview ${title}`}
+                  >
                     <GatsbyImage image={image} alt={title} className="img" />
                   </a>
                 </div>
