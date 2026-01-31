@@ -2,7 +2,8 @@ const config = require('./src/config');
 module.exports = {
   siteMetadata: {
     title: 'Ksaers',
-    twitterUsername: '@bchiang7',
+    description: 'Андрей Михалёв - DevOps-инженер и Java-разработчик. Портфолио проектов и опыт работы.', 
+    author: 'Ksaers',
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -11,12 +12,12 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sitemap`,
-    // `gatsby-plugin-robots-txt`, // УЖЕ ЗАКОММЕНТИРОВАН
+    // `gatsby-plugin-robots-txt`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: 'Brittany Chiang',
-        short_name: 'Brittany Chiang',
+        name: 'Ksaers',
+        short_name: 'Ksaers',
         start_url: '/',
         background_color: config.colors.darkNavy,
         theme_color: config.colors.navy,
@@ -63,7 +64,6 @@ module.exports = {
               rel: 'nofollow noopener noreferrer',
             },
           },
-          // ЗАКОММЕНТИРОВАТЬ ЭТИ ПРОБЛЕМНЫЕ ПЛАГИНЫ:
           /*
           {
             resolve: 'gatsby-remark-images',
