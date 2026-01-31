@@ -9,3 +9,9 @@ package-lock.json
 .DS_Store
 
 .vscode/
+
+!public/sitemap.xml
+!public/robots.txt
+!public/google*.html
+!public/yandex*.html
+!public/favicon.ico
